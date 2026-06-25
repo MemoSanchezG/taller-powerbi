@@ -1,4 +1,4 @@
-# 📖 Guía Power BI — Taller: Análisis de Sismos Globales
+# 📖 Guía Power BI — FUNDAMENTOS DE POWER BI: DEL DATASET AL DASHBOARD
 
 > Sigue esta guía después de ejecutar el script Python y tener los archivos  
 > `sismos.csv` y `zonas_riesgo.csv` en la carpeta `data/`.
@@ -41,7 +41,7 @@ Verifica que cada columna tenga el tipo correcto (el ícono a la izquierda del n
 | `fecha_utc` | Text (o Date/Time) |
 | `nivel_alerta`, `region`, `clave_zona` | Text |
 
-Para cambiar el tipo: clic derecho en el encabezado de la columna → **Change Type**
+Para cambiar el tipo: clic en el encabezado de la columna → **Change Type**
 
 ---
 
@@ -90,7 +90,7 @@ Crearemos una vista filtrada que solo muestre los eventos más relevantes.
 
 ## Paso 6 — Aplicar y cargar
 
-1. Haz clic en **Close & Apply** (esquina superior izquierda)
+1. Haz clic en **Close & Apply** (esquina superior izquierda). Esto cerrará Power Query, lo puedes abrir en cualquier momento usando el botón "Transform data"
 2. Power BI cargará las tres queries: `sismos`, `sismos_significativos`, `zonas_riesgo`
 3. Una vez cargadas, verás las tablas en el panel **Data** (derecha)
 
