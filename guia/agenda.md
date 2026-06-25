@@ -1,8 +1,7 @@
-# 📅 Agenda del Taller — Power BI Práctico: Sismos Globales
+# 📅 Agenda — FUNDAMENTOS DE POWER BI: DEL DATASET AL DASHBOARD
 
 **Duración total:** 3 horas 30 minutos  
-**Audiencia:** Estudiantes universitarios (FCFM-UANL y otras carreras)  
-**Dinámica:** 60% práctica / 40% explicación
+**Dinámica:** 60% práctica / 40% teoría
 
 ---
 
@@ -12,14 +11,14 @@
 |---|--------|--------|-----------|
 | 1 | Introducción y contexto | 15 min | 00:15 |
 | 2 | Python + API USGS | 30 min | 00:45 |
-| — | ☕ Pausa | 10 min | 00:55 |
+| — | Revisión de datos | 10 min | 00:55 |
 | 3 | Power Query: carga y limpieza | 35 min | 01:30 |
 | 4 | Power Query: columna calculada y 2 queries | 25 min | 01:55 |
 | 5 | Modelo de datos: relación entre tablas | 15 min | 02:10 |
-| — | ☕ Pausa | 10 min | 02:20 |
+| — | Revisión de modelo | 10 min | 02:20 |
 | 6 | Visualización básica | 25 min | 02:45 |
 | 7 | Dashboard con visual avanzado + interactividad | 30 min | 03:15 |
-| 8 | Debate, preguntas y cierre | 15 min | 03:30 |
+| 8 | Exploración, preguntas y cierre | 15 min | 03:30 |
 
 ---
 
@@ -38,7 +37,7 @@
 - Demostración rápida del resultado final (mostrar el dashboard terminado)
 - Presentar el repositorio en GitHub
 
-**Pregunta disparadora para el grupo:**  
+**Pregunta para el grupo:**  
 > *"¿Cuántos sismos creen que ocurren en el mundo en un día cualquiera?"*
 
 ---
@@ -88,7 +87,9 @@
 
 ---
 
-### ☕ Pausa (10 min)
+### Revisión de datos (10 min)
+
+Este espacio se usa para asegurar que todos tengan datos para la entrada de Power BI.
 
 ---
 
@@ -149,7 +150,6 @@ Usaremos una aproximación práctica para visualizar esto.
 4. Cambiar tipo de la nueva columna a **Decimal Number**
 5. Discutir: *¿Cuántas veces más energía libera un sismo de magnitud 7 que uno de magnitud 5?*
 
-> 💡 **Dato para debate:** Un sismo de M7 libera ~1,000 veces más energía que uno de M5.
 
 #### Parte B — Query derivada: Solo sismos significativos (13 min)
 
@@ -188,7 +188,7 @@ Crearemos una segunda vista filtrada (query adicional) que Power BI puede usar e
 
 ---
 
-### ☕ Pausa (10 min)
+### Revisión (10 min)
 
 ---
 
@@ -259,16 +259,13 @@ Este visual usa datos de **ambas tablas** gracias a la relación que creamos.
 
 **Preguntas guía para el debate:**
 
-1. ¿En qué región del mundo se concentran más sismos? ¿Por qué?
-2. ¿Los sismos superficiales son más peligrosos que los profundos?  
-   *(Respuesta: generalmente sí, porque la energía se disipa menos antes de llegar a la superficie)*
-3. ¿Existe relación entre magnitud y alerta de tsunami?
-4. ¿Qué decisiones de política pública o ingeniería civil podrías tomar con este dashboard?
+1. ¿En qué región del mundo se concentran más sismos? ¿Alguna hipótesis?
+2. ¿Los sismos superficiales son más peligrosos que los profundos?
+3. ¿Qué decisiones de política pública o ingeniería civil podrías tomar con este dashboard?
+4. ¿Qué proyecto presentarías o que rol tomarías en proyectos de ingeniería civil o política pública?
 5. ¿Qué columna agregarías tú al dataset para hacer el análisis más completo?
 
 **Cierre:**
-- Mostrar el repositorio en GitHub con todos los archivos
-- Compartir el link para que los estudiantes puedan clonar y reproducir
 - Recomendaciones para seguir aprendiendo: Microsoft Learn, Comunidad Power BI
 
 ---
@@ -282,10 +279,8 @@ Este visual usa datos de **ambas tablas** gracias a la relación que creamos.
 
 ---
 
-## ⚠️ Notas para el facilitador
+## ⚠️ Notas
 
-- Tener los CSV pre-generados como respaldo por si hay problemas de internet
-- El script tarda ~10-20 segundos dependiendo de la conexión
 - Si la API del USGS no responde, usar los datos del repositorio en `data/sismos_muestra.csv`
 - Power BI puede tardar al cargar +1,000 filas en equipos lentos; ajustar `LIMITE = 500` en el script
 - El visual de mapa requiere tener habilitado "Map and filled map visuals" en la configuración de Power BI (Security settings)
