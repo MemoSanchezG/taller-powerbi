@@ -2,7 +2,7 @@
 =============================================================
 TALLER: Power BI Práctico — Datos sísmicos globales (USGS)
 =============================================================
-Autor del taller: (tu nombre)
+Autor del taller: Guillermo Ezequiel Sánchez Guerrero
 Fuente de datos: USGS Earthquake Hazards Program
 API pública: https://earthquake.usgs.gov/fdsnws/event/1/
 
@@ -26,9 +26,9 @@ import sys
 # ─────────────────────────────────────────────
 # CONFIGURACIÓN  (puedes cambiar estos valores)
 # ─────────────────────────────────────────────
-DIAS_ATRAS      = 90        # Cuántos días hacia atrás consultar
+DIAS_ATRAS      = 90        # Cuántos días hacia atrás consultar, modificar a 60 o 30 si tarda mucho en cargar Power BI
 MAGNITUD_MINIMA = 4.0       # Magnitud mínima (4.0+ son sismos perceptibles)
-LIMITE          = 2000      # Máximo de registros a descargar
+LIMITE          = 2000      # Máximo de registros a descargar, modificar a 500 si tarda mucho en cargar Power BI
 CARPETA_SALIDA  = "data"    # Carpeta donde se guardan los CSV
 
 # ─────────────────────────────────────────────
