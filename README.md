@@ -1,4 +1,4 @@
-# 🌍 Taller: Power BI Práctico — Análisis de Sismos Globales
+# FUNDAMENTOS DE POWER BI: DEL DATASET AL DASHBOARD
 
 > **FCFM – UANL** | Duración: 3 horas 30 minutos  
 > Nivel: Introductorio-Intermedio | Sin conocimientos previos de Power BI requeridos
@@ -9,13 +9,13 @@
 
 | Etapa | Contenido |
 |-------|-----------|
-| 1 | Qué es Business Intelligence y por qué importa |
+| 1 | Qué es Business Intelligence y por qué nos importa |
 | 2 | Consultar una API pública con Python y generar datos reales |
 | 3 | Importar y limpiar datos en Power Query |
 | 4 | Crear columnas calculadas y aplicar fórmulas en Power Query |
 | 5 | Relacionar dos tablas en el modelo de datos |
 | 6 | Construir visualizaciones interactivas en Power BI |
-| 7 | Leer e interpretar un dashboard sísmico |
+| 7 | Leer e interpretar un dashboard |
 
 ---
 
@@ -25,7 +25,7 @@
 taller-powerbi-sismos/
 │
 ├── scripts/
-│   └── descargar_sismos.py     ← Script Python que consulta la API del USGS
+│   └── descargar_sismos.py     ← Script Python que consulta la API
 │
 ├── data/                        ← Los CSV se generan aquí (no incluidos en el repo)
 │   ├── sismos.csv               ← Tabla principal: un evento sísmico por fila
@@ -82,7 +82,7 @@ Esto consultará la **API pública del USGS** y generará dos archivos en la car
 - `sismos.csv` — Eventos sísmicos de los últimos 90 días (magnitud ≥ 4.0)
 - `zonas_riesgo.csv` — Tabla de resumen por red sismológica y tipo de profundidad
 
-> ⚡ **Sin API key necesaria.** La API del USGS es completamente pública y gratuita.
+> ⚡ **Sin API key necesaria.** La API del USGS es completamente pública y gratuita. En otros proyectos puedes necesitar una API key, pueden ser gratis, gratis con registro o de paga.
 
 ### 4. Abrir Power BI Desktop
 - Importa `sismos.csv` y `zonas_riesgo.csv`
@@ -116,14 +116,13 @@ Esto consultará la **API pública del USGS** y generará dos archivos en la car
 
 ---
 
-## 💡 Preguntas para debate en el taller
+## 💡 Preguntas
 
-- ¿Por qué el Cinturón de Fuego del Pacífico concentra la mayoría de los sismos?
+- ¿Qué zona concentra la mayoría de los sismos?
 - ¿Existe relación entre la profundidad del sismo y su magnitud percibida?
 - ¿Los sismos superficiales son más peligrosos que los profundos?
 - ¿Cómo se distribuyen los eventos a lo largo de la semana? ¿Hay patrones temporales?
 - ¿Qué tan frecuentes son los sismos de magnitud 7.0+?
-- ¿Cuántos de los sismos del período habrías sentido si vivieras en la zona?
 
 ---
 
