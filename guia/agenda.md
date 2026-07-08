@@ -1,6 +1,6 @@
 # 📅 Agenda — FUNDAMENTOS DE POWER BI: DEL DATASET AL DASHBOARD
 
-**Duración total:** 3 horas 30 minutos  
+**Duración total:** 5 horas  
 **Dinámica:** 60% práctica / 40% teoría
 
 ---
@@ -9,16 +9,19 @@
 
 | # | Bloque | Tiempo | Acumulado |
 |---|--------|--------|-----------|
-| 1 | Introducción y contexto | 15 min | 00:15 |
-| 2 | Python + API USGS | 30 min | 00:45 |
-| — | Revisión de datos | 10 min | 00:55 |
-| 3 | Power Query: carga y limpieza | 35 min | 01:30 |
-| 4 | Power Query: columna calculada y 2 queries | 25 min | 01:55 |
-| 5 | Modelo de datos: relación entre tablas | 15 min | 02:10 |
-| — | Revisión de modelo | 10 min | 02:20 |
-| 6 | Visualización básica | 25 min | 02:45 |
-| 7 | Dashboard con visual avanzado + interactividad | 30 min | 03:15 |
-| 8 | Exploración, preguntas y cierre | 15 min | 03:30 |
+| 1 | Introducción y contexto | 20 min | 00:20 |
+| 2 | Python + API USGS | 30 min | 00:50 |
+| — | Revisión de datos | 10 min | 01:00 |
+| 3 | Power Query: carga y limpieza | 35 min | 01:35 |
+| 4 | Power Query: columnas calculadas y query derivada | 30 min | 02:05 |
+| 5 | Modelo de datos: relación entre tablas | 20 min | 02:25 |
+| — | Revisión de modelo | 10 min | 02:35 |
+| — | Receso | 15 min | 02:50 |
+| 6 | Medidas DAX esenciales | 25 min | 03:15 |
+| 7 | Visualización básica | 25 min | 03:40 |
+| 8 | Dashboard avanzado + interactividad | 40 min | 04:20 |
+| 9 | Reto guiado: construye tu propio visual | 20 min | 04:40 |
+| 10 | Debate, preguntas y cierre | 20 min | 05:00 |
 
 ---
 
@@ -26,11 +29,12 @@
 
 ---
 
-### Bloque 1 — Introducción y contexto (15 min)
+### Bloque 1 — Introducción y contexto (20 min)
 
 **Objetivo:** Ubicar el taller en el flujo profesional de datos.
 
 - ¿Qué es Business Intelligence y para qué sirve?
+- El ecosistema de Power BI: Desktop, Service y Mobile (mención breve; hoy trabajamos en Desktop)
 - Roles en el mundo de datos: analista, ingeniero, científico
 - El ciclo completo: captura → limpieza → modelo → visualización
 - ¿Por qué sismos? ¿Qué preguntas podemos responder con datos reales?
@@ -56,8 +60,8 @@
 
 1. Clonar el repositorio:
    ```bash
-   git clone https://github.com/TU_USUARIO/taller-powerbi-sismos.git
-   cd taller-powerbi-sismos
+   git clone https://github.com/MemoSanchezG/taller-powerbi.git
+   cd taller-powerbi
    ```
 
 2. Instalar dependencias:
@@ -132,9 +136,9 @@ En la query `sismos`:
 
 ---
 
-### Bloque 4 — Power Query: columna calculada y filtro avanzado (25 min)
+### Bloque 4 — Power Query: columnas calculadas y query derivada (30 min)
 
-**Objetivo:** Crear una columna nueva en Power Query y hacer una query derivada.
+**Objetivo:** Crear columnas nuevas en Power Query y una query derivada.
 
 #### Parte A — Nueva columna: Energía relativa (12 min)
 
@@ -150,8 +154,21 @@ Usaremos una aproximación práctica para visualizar esto.
 4. Cambiar tipo de la nueva columna a **Decimal Number**
 5. Discutir: *¿Cuántas veces más energía libera un sismo de magnitud 7 que uno de magnitud 5?*
 
+#### Parte B — Columna adicional guiada: Turno del día (6 min)
 
-#### Parte B — Query derivada: Solo sismos significativos (13 min)
+1. En la query `sismos`, ir a **Add Column → Custom Column**
+2. Nombre: `turno_dia`
+3. Fórmula M:
+   ```
+   = if [hora_del_dia] < 6 then "Madrugada"
+     else if [hora_del_dia] < 12 then "Mañana"
+     else if [hora_del_dia] < 18 then "Tarde"
+     else "Noche"
+   ```
+4. Cambiar tipo a **Text**
+5. Este patrón `if / else if / else` es muy común para clasificar datos numéricos; se reutilizará en el reto del Bloque 9
+
+#### Parte C — Query derivada: Solo sismos significativos (12 min)
 
 Crearemos una segunda vista filtrada (query adicional) que Power BI puede usar en paralelo.
 
@@ -170,7 +187,7 @@ Crearemos una segunda vista filtrada (query adicional) que Power BI puede usar e
 
 ---
 
-### Bloque 5 — Modelo de datos: relación entre tablas (15 min)
+### Bloque 5 — Modelo de datos: relación entre tablas (20 min)
 
 **Objetivo:** Crear la relación entre `sismos` y `zonas_riesgo` usando `clave_zona`.
 
@@ -184,15 +201,61 @@ Crearemos una segunda vista filtrada (query adicional) que Power BI puede usar e
 
 **Concepto clave — Tabla de hechos vs. tabla de dimensión:**  
 > `sismos` = tabla de hechos (cada fila = un evento real)  
-> `zonas_riesgo` = tabla de dimensión (describe/clasifica las zonas)
+> `zonas_riesgo` = tabla de dimensión (describe/clasifica las zonas)  
+> Este patrón (una tabla de hechos rodeada de dimensiones) se conoce como **esquema estrella**.
+
+**¿Por qué "Single" y no "Both" en la dirección del filtro?**  
+Con dirección única evitamos ambigüedades de filtrado cuando el modelo crece con más tablas de dimensión; "Both" solo se usa cuando realmente se necesita filtrar en ambos sentidos.
 
 ---
 
-### Revisión (10 min)
+### Revisión de modelo (10 min)
 
 ---
 
-### Bloque 6 — Visualización básica (25 min)
+### Receso (15 min)
+
+Buen momento para estirarse, tomar café y resolver dudas 1:1. Si algún equipo se atrasó con los datos o la instalación, aprovechar para ponerse al corriente antes de continuar.
+
+---
+
+### Bloque 6 — Medidas DAX esenciales (25 min)
+
+**Objetivo:** Introducir DAX y la diferencia entre medida y columna calculada.
+
+#### Parte A — Concepto (5 min)
+- Columna calculada (Power Query/M): se calcula fila por fila y queda fija al cargar el modelo
+- Medida (DAX): se recalcula dinámicamente según el contexto de filtro activo (slicers, páginas, etc.)
+- Sintaxis básica: `NombreMedida = Función(tabla[columna])`
+
+#### Parte B — Práctica (15 min)
+
+1. En el panel **Data**, clic derecho sobre la tabla `sismos` → **New measure**
+2. Crear:
+   ```
+   Total Sismos = COUNTROWS(sismos)
+   ```
+3. Crear:
+   ```
+   Magnitud Promedio = AVERAGE(sismos[magnitud])
+   ```
+4. Crear:
+   ```
+   % Sismos Con Alerta =
+   DIVIDE(
+       CALCULATE(COUNTROWS(sismos), sismos[nivel_alerta] <> "sin alerta"),
+       COUNTROWS(sismos)
+   )
+   ```
+5. Formatear `% Sismos Con Alerta` como porcentaje (**Measure tool → Format → Percentage**)
+
+#### Parte C — Discusión (5 min)
+- ¿Por qué el valor de estas medidas cambia al aplicar un slicer, mientras que una columna calculada permanece igual?
+- Estas medidas se usarán en el Bloque 7 en lugar de agregaciones directas
+
+---
+
+### Bloque 7 — Visualización básica (25 min)
 
 **Objetivo:** Crear el primer visual sencillo: distribución de sismos por categoría de magnitud.
 
@@ -208,21 +271,21 @@ Crearemos una segunda vista filtrada (query adicional) que Power BI puede usar e
 #### Visual 2 — Tarjeta KPI: total de sismos (5 min)
 
 1. Insertar visual **Card**
-2. Campo: `id_evento` → Count
+2. Arrastrar la medida `Total Sismos` (creada en el Bloque 6) al campo **Fields**
 3. Título: "Total de sismos registrados"
 
 #### Visual 3 — Segmentador: filtro por nivel de alerta (10 min)
 
 1. Insertar **Slicer**
 2. Campo: `nivel_alerta`
-3. Probar la interactividad: al seleccionar "red" en el slicer, la gráfica se filtra sola
+3. Probar la interactividad: al seleccionar "red" en el slicer, la gráfica y la Card se filtran solas
 4. **Este momento suele generar reacción — aprovecharlo para enfatizar la interactividad**
 
 ---
 
-### Bloque 7 — Dashboard con visual avanzado e interactividad (30 min)
+### Bloque 8 — Dashboard avanzado e interactividad (40 min)
 
-**Objetivo:** Combinar datos de ambas tablas en un visual más rico.
+**Objetivo:** Combinar datos de ambas tablas en visuales más ricos y agregar exploración ad hoc.
 
 #### Visual 4 — Mapa de sismos (10 min)
 
@@ -233,7 +296,7 @@ Crearemos una segunda vista filtrada (query adicional) que Power BI puede usar e
    - **Color:** `nivel_alerta`
 3. Filtrar desde el mapa: hacer clic en una zona y ver cómo reacciona la gráfica de barras
 
-#### Visual 5 — Tabla combinada: sismos + nivel de riesgo de zona (12 min)
+#### Visual 5 — Tabla combinada: sismos + nivel de riesgo de zona (10 min)
 
 Este visual usa datos de **ambas tablas** gracias a la relación que creamos.
 
@@ -244,7 +307,7 @@ Este visual usa datos de **ambas tablas** gracias a la relación que creamos.
 3. Ordenar por `magnitud` descendente
 4. Resaltar: **estamos cruzando información de dos fuentes distintas en una sola vista**
 
-#### Visual 6 — Gráfica de líneas: sismos por mes (8 min)
+#### Visual 6 — Gráfica de líneas: sismos por mes (10 min)
 
 1. Insertar **Line Chart**
 2. Configurar:
@@ -253,27 +316,53 @@ Este visual usa datos de **ambas tablas** gracias a la relación que creamos.
    - **Legend:** `tipo_profundidad`
 3. Pregunta para el grupo: *¿Observan algún patrón temporal?*
 
+#### Visual 7 — Drill-through: página de detalle por región (10 min)
+
+1. Crear una nueva página llamada "Detalle región"
+2. Agregar visuales de detalle: tabla con todos los sismos de la región, tarjetas con `Magnitud Promedio` y `% Sismos Con Alerta`
+3. Arrastrar el campo `region` al pozo **Drillthrough** en el panel Visualizations
+4. Volver a la página del dashboard principal → clic derecho sobre una barra o un punto del mapa → **Drill through → Detalle región**
+5. Explicar el valor de esto para exploración ad hoc sin saturar el dashboard principal
+
 ---
 
-### Bloque 8 — Debate, preguntas y cierre (15 min)
+### Bloque 9 — Reto guiado: construye tu propio visual (20 min)
+
+**Objetivo:** Practicar de forma autónoma lo aprendido, con el instructor circulando por la sala resolviendo dudas.
+
+Cada estudiante (o equipo) elige al menos **una** de estas opciones:
+
+1. Crear una medida DAX nueva, por ejemplo `Sismo Mas Fuerte = MAX(sismos[magnitud])`
+2. Agregar un visual no cubierto en la guía (Donut chart de `tipo_profundidad`, Treemap de `region`, o similar)
+3. Aplicar formato condicional a la tabla combinada del Bloque 8 (colorear por `nivel_riesgo`)
+4. Agregar un segundo slicer (por `categoria_magnitud` o un rango de fechas)
+5. Replicar el patrón de `turno_dia` del Bloque 4, pero clasificando `dia_semana` en "Fin de semana" / "Día laboral"
+
+Si el tiempo lo permite, invitar a 2–3 estudiantes a compartir su pantalla brevemente.
+
+---
+
+### Bloque 10 — Debate, preguntas y cierre (20 min)
 
 **Preguntas guía para el debate:**
 
 1. ¿En qué región del mundo se concentran más sismos? ¿Alguna hipótesis?
 2. ¿Los sismos superficiales son más peligrosos que los profundos?
 3. ¿Qué decisiones de política pública o ingeniería civil podrías tomar con este dashboard?
-4. ¿Qué proyecto presentarías o que rol tomarías en proyectos de ingeniería civil o política pública?
+4. ¿Qué proyecto presentarías o qué rol tomarías en proyectos de ingeniería civil o política pública?
 5. ¿Qué columna agregarías tú al dataset para hacer el análisis más completo?
+6. ¿Qué ventaja le viste a una medida DAX frente a una columna calculada de Power Query?
 
 **Cierre:**
+- Compartir brevemente los retos resueltos en el Bloque 9 (si no se hizo antes)
 - Recomendaciones para seguir aprendiendo: Microsoft Learn, Comunidad Power BI
 
 ---
 
 ## 🔧 Variaciones opcionales (si sobra tiempo)
 
-- **Condicional con DAX:** crear una medida `[% sismos con alerta]`
-- **Drill-through:** configurar una página de detalle por región
+- **Bookmarks y navegación:** crear botones para alternar entre el dashboard principal y la página de detalle
+- **Tooltips personalizados:** página de tooltip con información adicional al pasar el mouse sobre el mapa
 - **Filtro de fecha:** agregar un slicer de rango de fechas
 - **Exportar el informe a PDF** desde Power BI
 
@@ -284,3 +373,4 @@ Este visual usa datos de **ambas tablas** gracias a la relación que creamos.
 - Si la API del USGS no responde, usar los datos del repositorio en `data/sismos_muestra.csv`
 - Power BI puede tardar al cargar +1,000 filas en equipos lentos; ajustar `LIMITE = 500` en el script
 - El visual de mapa requiere tener habilitado "Map and filled map visuals" en la configuración de Power BI (Security settings)
+- El receso a la mitad del taller es buen momento para resolver problemas de instalación o de datos que hayan quedado pendientes

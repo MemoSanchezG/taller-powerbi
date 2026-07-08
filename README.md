@@ -1,6 +1,6 @@
 # FUNDAMENTOS DE POWER BI: DEL DATASET AL DASHBOARD
 
-> **FCFM – UANL** | Duración: 3 horas 30 minutos  
+> **FCFM – UANL** | Duración: 5 horas  
 > Nivel: Introductorio-Intermedio | Sin conocimientos previos de Power BI requeridos
 
 ---
@@ -32,8 +32,11 @@ taller-powerbi-sismos/
 │   └── zonas_riesgo.csv         ← Tabla de dimensión: clasificación por zona/profundidad
 │
 ├── guia/
-│   ├── agenda.md                ← Agenda detallada del taller (3h 30min)
-│   └── guia_powerbi.md          ← Paso a paso para Power Query y los visuales
+│   ├── agenda.md                ← Agenda detallada del taller (5h)
+│   └── guia_powerbi.md          ← Paso a paso para Power Query, DAX y los visuales
+│
+├── presentacion/
+│   └── taller_powerbi.tex       ← Diapositivas (LaTeX/Beamer) para el instructor
 │
 └── README.md                    ← Este archivo
 ```
