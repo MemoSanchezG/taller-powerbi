@@ -134,7 +134,8 @@ Esto consultará la **API pública del USGS** y generará dos archivos en la car
 | Recurso | Enlace |
 |---------|--------|
 | Microsoft Learn – Power BI | https://learn.microsoft.com/es-es/training/powerplatform/power-bi |
-| Documentación API USGS | https://earthquake.usgs.gov/fdsnws/event/1/ |
+| USGS – Feeds y Web Services (punto de entrada amigable) | https://earthquake.usgs.gov/earthquakes/feed/ |
+| Documentación técnica API USGS (FDSN Event Web Service) | https://earthquake.usgs.gov/fdsnws/event/1/ |
 | Comunidad Power BI | https://community.fabric.microsoft.com |
 | DAX Guide | https://dax.guide |
 
