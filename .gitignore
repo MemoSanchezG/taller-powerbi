@@ -1,0 +1,10 @@
+# Datos generados por el script (no se versionan)
+data/
+
+# Python
+__pycache__/
+*.pyc
+.pbix
+.pptx
+presentacion/taller_powerbi.pptx
+taller-powerbi.pbix

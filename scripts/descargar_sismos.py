@@ -4,7 +4,8 @@ TALLER: Power BI Práctico — Datos sísmicos globales (USGS)
 =============================================================
 Autor del taller: Guillermo Ezequiel Sánchez Guerrero
 Fuente de datos: USGS Earthquake Hazards Program
-API pública: https://earthquake.usgs.gov/fdsnws/event/1/
+Feeds y Web Services (punto de entrada amigable): https://earthquake.usgs.gov/earthquakes/feed/
+API pública (documentación técnica FDSN): https://earthquake.usgs.gov/fdsnws/event/1/
 
 Este script descarga datos de sismos globales usando la API
 pública del USGS (United States Geological Survey) y genera

@@ -1,6 +1,6 @@
 # FUNDAMENTOS DE POWER BI: DEL DATASET AL DASHBOARD
 
-> **FCFM – UANL** | Duración: 3 horas 30 minutos  
+> **FCFM – UANL** | Duración: 5 horas  
 > Nivel: Introductorio-Intermedio | Sin conocimientos previos de Power BI requeridos
 
 ---
@@ -32,8 +32,11 @@ taller-powerbi-sismos/
 │   └── zonas_riesgo.csv         ← Tabla de dimensión: clasificación por zona/profundidad
 │
 ├── guia/
-│   ├── agenda.md                ← Agenda detallada del taller (3h 30min)
-│   └── guia_powerbi.md          ← Paso a paso para Power Query y los visuales
+│   ├── agenda.md                ← Agenda detallada del taller (5h)
+│   └── guia_powerbi.md          ← Paso a paso para Power Query, DAX y los visuales
+│
+├── presentacion/
+│   └── taller_powerbi.tex       ← Diapositivas (LaTeX/Beamer) para el instructor
 │
 └── README.md                    ← Este archivo
 ```
@@ -131,7 +134,8 @@ Esto consultará la **API pública del USGS** y generará dos archivos en la car
 | Recurso | Enlace |
 |---------|--------|
 | Microsoft Learn – Power BI | https://learn.microsoft.com/es-es/training/powerplatform/power-bi |
-| Documentación API USGS | https://earthquake.usgs.gov/fdsnws/event/1/ |
+| USGS – Feeds y Web Services (punto de entrada amigable) | https://earthquake.usgs.gov/earthquakes/feed/ |
+| Documentación técnica API USGS (FDSN Event Web Service) | https://earthquake.usgs.gov/fdsnws/event/1/ |
 | Comunidad Power BI | https://community.fabric.microsoft.com |
 | DAX Guide | https://dax.guide |
 
